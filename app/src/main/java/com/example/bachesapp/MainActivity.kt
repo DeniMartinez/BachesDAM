@@ -19,6 +19,10 @@ class MainActivity : AppCompatActivity() {
     binding.ButtonNube.setOnClickListener{
         gotoNube()
     }
+
+    binding.ButtonMapa.setOnClickListener{
+        goToMap()
+    }
     }
 
 
@@ -29,6 +33,11 @@ class MainActivity : AppCompatActivity() {
 
     fun gotoNube(){
         val intent = Intent(this, NubeActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun goToMap(){
+        val intent = Intent(this,MapaActivity::class.java)
         startActivity(intent)
     }
 }
