@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "438462032190",
+    "firebase_url": "https://baches-76234-default-rtdb.firebaseio.com",
+    "project_id": "baches-76234",
+    "storage_bucket": "baches-76234.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:438462032190:android:6ade8a08f5a0914069a46f",
+        "android_client_info": {
+          "package_name": "com.example.bachesapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "438462032190-7fuplfvg3mujq0sdt76iknrdsej8a3fc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyByBuVNCJ1wJzM9l_XiNZT6ZuDMa9lwWOg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "438462032190-7fuplfvg3mujq0sdt76iknrdsej8a3fc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

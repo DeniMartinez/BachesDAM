@@ -25,12 +25,17 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 
 
 class MapaActivity : AppCompatActivity(), OnMapReadyCallback {
+
+    internal  var dbHelper = DB_Helper(this)
     lateinit var binding:ActivityMapaBinding
 
     var googleMaP: GoogleMap ?= null
+
+    private val puntosList: ArrayList<LatLng> = ArrayList()
 
     var PERMISSION_ID = 42
     var fusedLocationClient: FusedLocationProviderClient?= null
@@ -52,10 +57,41 @@ class MapaActivity : AppCompatActivity(), OnMapReadyCallback {
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
         getLastLocation()
+
+        binding.btnGuardar.setOnClickListener{
+
+            dbHelper.deleteAll()
+            for (punto in puntosList){
+                dbHelper.add(punto.longitude,punto.latitude)
+            }
+        }
     }
 
     override fun onMapReady(map: GoogleMap) {
         googleMaP = map
+
+        val res =  dbHelper.allData
+        if (res.count != 0){
+            while (res.moveToNext()){
+               val latLng = LatLng(res.getDouble(0),res.getDouble(1))
+                val markerOptions = MarkerOptions().position(latLng)
+                googleMaP?.addMarker(markerOptions)
+                puntosList.add(latLng)
+            }
+        }
+
+        googleMaP?.setOnMapClickListener { latLng ->
+            val markerOptions = MarkerOptions().position(latLng)
+            googleMaP?.addMarker(markerOptions)
+            puntosList.add(latLng)
+        }
+
+        googleMaP?.setOnMarkerClickListener { marker ->
+            marker.remove()
+            val postion = marker.position
+            puntosList.remove(postion)
+            true
+        }
     }
 
     private fun getLastLocation(){

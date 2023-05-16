@@ -24,7 +24,7 @@ class DB_Helper (context:Context):SQLiteOpenHelper(context,dbname,factory,versio
         TODO("Not yet implemented")
     }
 
-    fun add(longitude:Float, latitude:Float){
+    fun add(longitude:Double, latitude:Double){
         val db = this.writableDatabase
         val contentValues =  ContentValues()
         contentValues.put("latitude",latitude)
@@ -38,4 +38,9 @@ class DB_Helper (context:Context):SQLiteOpenHelper(context,dbname,factory,versio
             val res = db.rawQuery("SELECT * FROM baches", null)
             return res
         }
+
+    fun deleteAll():Int{
+        val db = this.writableDatabase
+        return  db.delete("baches",null,null)
+    }
 }
