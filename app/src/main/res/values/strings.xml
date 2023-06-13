@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">BachesApp</string>
+    <string name="google_map_api_key">AIzaSyBEXbRgCqrI_iHSgo43_VPGfx9X0JiLTBo</string>
 </resources>
